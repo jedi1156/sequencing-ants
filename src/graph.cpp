@@ -1,7 +1,5 @@
 #include "graph.hpp"
 
-using namespace std;
-
 Graph::Graph(string filename) {
 	// open file
   ifstream file;
@@ -10,13 +8,13 @@ Graph::Graph(string filename) {
   // load nodes
   string s;
   while(file >> s) {
+    if(D) cout << "adding " << s << endl;
     nodes.push_back(new Node(s));
   }
 
   //  matrix
   for (unsigned i=0; i<nodes.size(); i++) {
     for (unsigned j=0; j<nodes.size(); j++) {
-
 
     }
   }
@@ -26,7 +24,12 @@ Graph::Graph(string filename) {
 }
 
 Graph::~Graph() {
-  // deallocate nodes
+
+  for (unsigned i=0; i < nodes.size(); i++) {
+    delete nodes[i];
+  }
+  nodes.clear();
+
   // deallocate edges
   // deallocate matrix
 }

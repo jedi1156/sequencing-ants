@@ -6,6 +6,8 @@
 #include <iostream>
 #include <fstream>
 
+#define D 1
+
 using namespace std;
 
 #endif
