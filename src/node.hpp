@@ -8,8 +8,8 @@ private:
   string value;
 
 public:
-  Node(string value) {
-    this->value = value;
+  Node(string value) :
+    value(value) {
   }
 
   string get_value() { return value; }
