@@ -7,6 +7,7 @@ class Graph {
 private:
   unsigned size;
   Edge** matrix;
+  vector<Node*> nodes;
 
 public:
   Graph(string filename);
