@@ -4,8 +4,8 @@ using namespace std;
 
 Graph::Graph(string filename) {
 	// open file
-  ofstream file;
-  file.open(filename, ios:in);
+  ifstream file;
+  file.open((char*)filename.c_str());
 
   // load nodes
   string s;
@@ -14,8 +14,9 @@ Graph::Graph(string filename) {
   }
 
   //  matrix
-  for (int i=0; i<nodes.size(); i++) {
-    for (int j=0; j<nodes.size(); j++) {
+  for (unsigned i=0; i<nodes.size(); i++) {
+    for (unsigned j=0; j<nodes.size(); j++) {
+
 
     }
   }
