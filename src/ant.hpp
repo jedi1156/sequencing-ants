@@ -5,11 +5,14 @@
 
 class Ant {
 private:
-  vector<unsigned> no_visits;
-  unsigned no_unique_visits;
+  Graph *graph;
+  Solution *solution;
 
 public:
-  Ant();
+  Ant(Graph *graph);
+
+  // builds solution
+  void traverse_graph();
 };
 
 #endif
