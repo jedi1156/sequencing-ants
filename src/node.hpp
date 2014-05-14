@@ -9,7 +9,7 @@ private:
 
 public:
   Node(string value) {
-    this.value = value;
+    this->value = value;
   }
 
   string get_value() { return value; }

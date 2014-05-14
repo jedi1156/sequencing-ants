@@ -6,7 +6,7 @@
 class Edge {
 
 public:
-  Edge(int weight)
+  Edge(int weight);
 };
 
 #endif

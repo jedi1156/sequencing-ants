@@ -2,6 +2,8 @@
 #define _INCLUDE_GRAPH_HPP
 
 #include "common.hpp"
+#include "node.hpp"
+#include "edge.hpp"
 
 class Graph {
 private:
@@ -11,6 +13,7 @@ private:
 
 public:
   Graph(string filename);
+  ~Graph();
 };
 
 #endif
