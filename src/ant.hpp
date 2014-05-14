@@ -2,6 +2,8 @@
 #define _INCLUDE_ANT_HPP
 
 #include "common.hpp"
+#include "solution.hpp"
+#include "graph.hpp"
 
 class Ant {
 private:

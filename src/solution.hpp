@@ -2,6 +2,7 @@
 #define _INCLUDE_SOLUTION_HPP
 
 #include "common.hpp"
+#include "node.hpp"
 
 class Solution {
 private:
@@ -12,7 +13,7 @@ private:
 public:
   Solution();
 
-  add_node(Node *node);
+  void add_node(Node *node);
 };
 
 #endif
