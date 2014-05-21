@@ -8,7 +8,7 @@
 class Graph {
 private:
   unsigned size;
-  Edge** matrix;
+  Edge*** matrix;
   vector<Node*> nodes;
 
 public:

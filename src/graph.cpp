@@ -13,12 +13,13 @@ Graph::Graph(string filename) {
   }
 
   //  matrix
-  for (unsigned i=0; i<nodes.size(); i++) {
-    for (unsigned j=0; j<nodes.size(); j++) {
-
+  matrix = new Edge**[nodes.size()];
+  for (unsigned i = 0; i < nodes.size(); i++) {
+    matrix[i] = new Edge*[nodes.size()];
+    for (unsigned j = 0; j < nodes.size(); j++) {
+      matrix[i][j] = new Edge(nodes[i], nodes[j]);
     }
   }
-
   // close file
   file.close();
 }

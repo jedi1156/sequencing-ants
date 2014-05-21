@@ -4,9 +4,9 @@ LIBS=-pthread
 
 TARGET=sequencing-ants
 
-INTERFACES=common edge node ranking solution
+INTERFACES=common node ranking solution
 
-SUBTARGETS=ant graph
+SUBTARGETS=ant graph node edge
 TARGET_FILES=$(SUBTARGETS) main
 HEADER_FILES=$(SUBTARGETS) $(INTERFACES)
 
