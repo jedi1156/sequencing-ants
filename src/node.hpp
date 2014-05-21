@@ -6,13 +6,15 @@
 class Node {
 private:
   string value;
+  unsigned index;
 
 public:
-  Node(string value) :
-    value(value) {
+  Node(string value, unsigned index) :
+    value(value), index(index) {
   }
 
   string get_value() { return value; }
+  unsigned get_index() { return index; }
 };
 
 #endif
