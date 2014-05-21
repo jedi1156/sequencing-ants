@@ -6,14 +6,15 @@
 
 class Edge {
 private:
-  Node* v1;
-  Node* v2;
-  int value;
-  int calculate_overlay(string s1, string s2);
-public:
-  Edge(Node* v1, Node* v2);
+  Node* n1;
+  Node* n2;
+  unsigned weight;
+  unsigned calculate_overlay(string s1, string s2);
 
-  int get_value() {return value;}
+public:
+  Edge(Node* n1, Node* n2);
+  Node* other_node(Node* node);
+  unsigned get_weight() {return weight;}
 };
 
 #endif

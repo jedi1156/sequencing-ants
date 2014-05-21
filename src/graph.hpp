@@ -14,6 +14,11 @@ private:
 public:
   Graph(string filename);
   ~Graph();
+  vector<Node*> get_nodes() const { return nodes; }
+  unsigned get_size() const { return size; }
+  Edge*** get_matrix() const { return matrix; }
+
+  friend ostream& operator<<(ostream& os, const Graph& graph);
 };
 
 #endif

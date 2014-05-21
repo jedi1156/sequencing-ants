@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 
-#define D 1
+#define D 0
 
 using namespace std;
 

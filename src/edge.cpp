@@ -1,14 +1,19 @@
 #include "edge.hpp"
 
-Edge::Edge(Node* v1, Node* v2) {
-  this->v1 = v1;
-  this->v2 = v2;
-  value = calculate_overlay(v1->get_value(), v2->get_value());
-  if(D) cout << "adding edge " << v1->get_value() << "->"<< v2->get_value() << "("<<value<<")"<<endl;
+Edge::Edge(Node* n1, Node* n2) {
+  this->n1 = n1;
+  this->n2 = n2;
+  weight = calculate_overlay(n1->get_value(), n2->get_value());
+  if(D) if(weight > 0) cout << "adding edge " << n1->get_value() << "->"<< n2->get_value() << "("<<weight<<")"<<endl;
 }
 
-int Edge::calculate_overlay(string s1, string s2) {
-  int max = 0;
+Node* Edge::other_node(Node* node) {
+  if(node->get_index() == n1->get_index()) return n2;
+  return n1;
+}
+
+unsigned Edge::calculate_overlay(string s1, string s2) {
+  unsigned max = 0;
   for (unsigned i = 1; i < s1.length(); i++) {
     if(s1.substr(s1.length() - i, s1.length()) == s2.substr(0, i))
       max = i;

@@ -7,16 +7,17 @@ Graph::Graph(string filename) {
 
   // load nodes
   string s;
-  while(file >> s) {
+  for(unsigned index = 0; file >> s; index++) {
     if(D) cout << "adding " << s << endl;
-    nodes.push_back(new Node(s));
+    nodes.push_back(new Node(s, index));
   }
 
+  size = nodes.size();
   //  matrix
-  matrix = new Edge**[nodes.size()];
-  for (unsigned i = 0; i < nodes.size(); i++) {
-    matrix[i] = new Edge*[nodes.size()];
-    for (unsigned j = 0; j < nodes.size(); j++) {
+  matrix = new Edge**[size];
+  for (unsigned i = 0; i < size; i++) {
+    matrix[i] = new Edge*[size];
+    for (unsigned j = 0; j < size; j++) {
       matrix[i][j] = new Edge(nodes[i], nodes[j]);
     }
   }
@@ -33,4 +34,25 @@ Graph::~Graph() {
 
   // deallocate edges
   // deallocate matrix
+}
+
+ostream& operator<<(ostream& os, const Graph& g) {
+  os << "Graph[size="<<g.get_size()<<"]";
+  os << " (";
+  for (unsigned i=0; i < g.get_size(); i++) {
+    os << g.get_nodes()[i]->get_value();
+    if(i != g.get_size()-1)  os << ", ";
+  }
+  os << ")\n";
+
+  for (unsigned i=0; i < g.get_size(); i++) {
+    os << g.get_nodes()[i]->get_value() << " -> ";
+      for (unsigned j = 0; j < g.get_size(); j++) {
+        Edge* e = g.get_matrix()[i][j];
+        if (e->get_weight() > 0)
+          os << g.get_nodes()[j]->get_value() << "("<<e->get_weight()<<"), ";
+      }
+      os << endl;
+  }
+  return os;
 }
