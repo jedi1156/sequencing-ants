@@ -32,8 +32,13 @@ Graph::~Graph() {
   }
   nodes.clear();
 
-  // deallocate edges
-  // deallocate matrix
+  for (unsigned i = 0; i < size; i++) {
+    for (unsigned j = 0; j < size; j++) {
+        delete matrix[i][j];
+      }
+      delete matrix[i];
+    }
+    delete matrix;
 }
 
 ostream& operator<<(ostream& os, const Graph& g) {

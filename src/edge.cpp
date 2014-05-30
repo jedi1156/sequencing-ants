@@ -20,3 +20,8 @@ unsigned Edge::calculate_overlay(string s1, string s2) {
   }
   return max;
 }
+
+ostream& operator<<(ostream& os, const Edge& e) {
+  os << "Edge["<<e.get_n1()->get_value() << e.get_n2()->get_value()<<"]";
+  return os;
+}
