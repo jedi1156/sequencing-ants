@@ -1,16 +1,19 @@
 #include "aco.hpp"
 
+// TODO
 ACO::ACO(Graph *graph, unsigned number_of_ants)
 : graph(graph) {
   // create ants
   // create ranking(ants)
 }
 
+// TODO
 ACO::~ACO() {
   // destroy ants
   // destroy ranking
 }
 
+// TODO
 void ACO::optimize() {
   for ( iterations, term conditions ) {
     iteration();
@@ -18,6 +21,7 @@ void ACO::optimize() {
   }
 }
 
+// TODO
 void ACO::iteration() {
   if (parallel) {
     for ( t = threads[i] in threads ) {
@@ -34,10 +38,15 @@ void ACO::iteration() {
 }
 
 void ACO::one_ant_iteration(Ant *ant) {
-  ant->traverse_graph()
+  ant->traverse_graph();
 }
 
 void ACO::finish_iteration() {
-  // update ranking
-  // update graph - pheromones
+  ranking->update();
+  update_pheromones();
+}
+
+void ACO::update_pheromones() {
+  ranking->prepare_pheromones();
+  graph->iterate();
 }

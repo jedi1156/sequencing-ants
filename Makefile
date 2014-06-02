@@ -4,9 +4,9 @@ LIBS=-pthread
 
 TARGET=sequencing-ants
 
-INTERFACES=common ranking solution
+INTERFACES=common
 
-SUBTARGETS=ant graph edge node random_number_generator aco
+SUBTARGETS=ant graph edge node random_number_generator aco ranking solution
 
 TARGET_FILES=$(SUBTARGETS) main
 HEADER_FILES=$(SUBTARGETS) $(INTERFACES)

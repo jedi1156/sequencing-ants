@@ -16,8 +16,16 @@ private:
   Solution *solution;
   RandomNumberGenerator generator;
 
+  void set_beginning_position();
+  bool move();
+  void step(Edge *edge);
+  double heuristic_attrictiveness(Edge *choice);
+  double probability_of_choice(Edge *choice);
+  bool can_choose_edge(Edge *edge);
+  void filter_choices(vector<Edge *> &potential_choices);
+  Edge* choose_edge();
 public:
-  Ant(Graph *graph, double alpha, double beta, double gamma);
+  Ant(Graph *graph, double alpha, double beta, double gamma, unsigned max_solution_length);
 
   // builds solution
   void traverse_graph();

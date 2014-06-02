@@ -18,6 +18,8 @@ public:
   unsigned get_size() const { return size; }
   Edge*** get_matrix() const { return matrix; }
 
+  void iterate();
+
   friend ostream& operator<<(ostream& os, const Graph& graph);
 };
 

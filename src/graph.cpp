@@ -41,6 +41,13 @@ Graph::~Graph() {
     delete matrix;
 }
 
+// TODO
+void Graph::iterate() {
+  for ( edge in edges ) {
+    edge->iterate();
+  }
+}
+
 ostream& operator<<(ostream& os, const Graph& g) {
   os << "Graph[size="<<g.get_size()<<"]";
   os << " (";

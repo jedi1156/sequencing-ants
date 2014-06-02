@@ -25,3 +25,12 @@ ostream& operator<<(ostream& os, const Edge& e) {
   os << "Edge["<<e.get_n1()->get_value() << e.get_n2()->get_value()<<"]";
   return os;
 }
+
+void Edge::add_pheromones(double ph) {
+  next_iteration_pheromones += ph;
+}
+
+void Edge::iterate(/* params? */) {
+  // pheromones = WZOR(next_iteration_pheromones);
+  next_iteration_pheromones = 0;
+}

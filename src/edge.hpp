@@ -11,6 +11,9 @@ private:
   unsigned weight;
   unsigned calculate_overlay(string s1, string s2);
 
+  double pheromones;
+  double next_iteration_pheromones;
+
 public:
   Edge(Node* n1, Node* n2);
   Node* other_node(Node* node);
@@ -18,6 +21,9 @@ public:
   Node* get_n1() const { return n1; }
   Node* get_n2() const { return n2; }
   friend ostream& operator<<(ostream& os, const Edge& edge);
+
+  void add_pheromones(double ph);
+  void iterate(/* params? */);
 };
 
 #endif
