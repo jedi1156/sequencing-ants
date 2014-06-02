@@ -40,7 +40,7 @@ int RandomNumberGenerator::roulette(vector<double> &distribution) {
   unsigned = distribution.size();
   if (size == 0) return -1;
 
-  double choice = random(0, disteibution[size - 1]);
+  double choice = random(0, distribution[size - 1]);
 
   for (unsigned i = 0; i < size; ++i) {
     if (choice < distribution[i]) return i;

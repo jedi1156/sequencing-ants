@@ -29,6 +29,7 @@ public:
 
   // builds solution
   void traverse_graph();
+  Solution *get_solution() { return solution; }
 };
 
 #endif

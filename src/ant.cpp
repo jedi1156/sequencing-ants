@@ -72,6 +72,10 @@ Edge* Ant::choose_edge() {
     distribution.push_back(probability_of_choice(potential_choices[i]))
   }
 
+  for (unsigned i = 1; i < size; ++i) {
+    distribution[i] += distribution[i - 1];
+  }
+
   int choice = generator.roulette(distribution);
   if (choice < 0) return NULL;
   return potential_choices[choice];
