@@ -4,9 +4,10 @@ LIBS=-pthread
 
 TARGET=sequencing-ants
 
-INTERFACES=common node ranking solution
+INTERFACES=common ranking solution
 
-SUBTARGETS=ant graph node edge
+SUBTARGETS=ant graph edge node random_number_generator
+
 TARGET_FILES=$(SUBTARGETS) main
 HEADER_FILES=$(SUBTARGETS) $(INTERFACES)
 
