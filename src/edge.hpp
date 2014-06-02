@@ -22,6 +22,7 @@ public:
   Node* get_n2() const { return n2; }
   friend ostream& operator<<(ostream& os, const Edge& edge);
 
+  double get_pheromones() { return pheromones; }
   void add_pheromones(double ph);
   void iterate(/* params? */);
 };
