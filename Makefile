@@ -1,5 +1,5 @@
 CXX=g++
-CXX_FLAGS=-Wall -g
+CXX_FLAGS=-Wall -g -std=c++11
 LIBS=-pthread
 
 TARGET=sequencing-ants
