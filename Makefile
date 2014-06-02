@@ -6,7 +6,7 @@ TARGET=sequencing-ants
 
 INTERFACES=common ranking solution
 
-SUBTARGETS=ant graph edge node random_number_generator
+SUBTARGETS=ant graph edge node random_number_generator aco
 
 TARGET_FILES=$(SUBTARGETS) main
 HEADER_FILES=$(SUBTARGETS) $(INTERFACES)
