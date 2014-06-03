@@ -13,13 +13,14 @@ void Ranking::update() {
 
 // TODO
 void Ranking::prepare_pheromones() {
-  for ( ant in ants ) {
-    prepare_pheromones_for_one_ant(ant, i);
+  for (unsigned i = 0; i < ants.size(); i++) {
+    prepare_pheromones_for_one_ant(ants[i], i);
   }
 }
 
 // TODO
-void Ranking::prepare_pheromones_for_one_ant(Ant *ant, unsigned ranking position) {
+void Ranking::prepare_pheromones_for_one_ant(Ant *ant, unsigned ranking_position) {
+  Solution *solution = ant->get_solution();
   for ( edge in ant->solution ) {
     edge->add_pheromones( by ranking pos ); // wzór
   }

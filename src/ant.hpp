@@ -5,14 +5,16 @@
 #include "solution.hpp"
 #include "graph.hpp"
 #include "random_number_generator.hpp"
+#include "edge.hpp"
 
 class Ant {
 private:
+  Graph *graph;
   double alpha;
   double beta;
   double gamma;
-  Graph *graph;
-  unsigned current_node;
+  Node *current_node;
+  unsigned max_solution_length;
   Solution *solution;
   RandomNumberGenerator generator;
 

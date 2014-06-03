@@ -15,10 +15,12 @@ ACO::~ACO() {
 
 // TODO
 void ACO::optimize() {
+  /*
   for ( iterations, term conditions ) {
     iteration();
     finish_iteration();
   }
+  */
 }
 
 // TODO

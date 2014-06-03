@@ -3,10 +3,11 @@
 
 #include "common.hpp"
 #include "node.hpp"
+#include "edge.hpp"
 
 class Solution {
 private:
-  vector<Node*> nodes;
+  vector<Edge*> nodes;
   unsigned no_unique_nodes;
   vector<unsigned> no_visits;
   unsigned length;

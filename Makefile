@@ -1,5 +1,5 @@
-CXX=g++
-CXX_FLAGS=-Wall -g -std=c++11
+CXX=./colorgcc.pl
+CXX_FLAGS=-Wall -g -std=c++11 -Wreorder
 LIBS=-pthread
 
 TARGET=sequencing-ants

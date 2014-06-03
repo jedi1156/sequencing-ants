@@ -41,10 +41,16 @@ Graph::~Graph() {
     delete matrix;
 }
 
+Edge* Graph::get_edge(int i, int j) {
+  return matrix[i][j];
+}
+
 // TODO
 void Graph::iterate() {
-  for ( edge in edges ) {
-    edge->iterate();
+  for (unsigned i = 0; i < size; i++) {
+    for (unsigned j = 0; j < size; j++) {
+      matrix[i][j]->iterate();
+    }
   }
 }
 

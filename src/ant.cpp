@@ -16,12 +16,12 @@ void Ant::traverse_graph() {
 
   // create solution
   while(term_condition) {
-    term_condition &&= move();
+    term_condition = term_condition && move();
   }
 }
 
 void Ant::set_beginning_position() {
-  this->current_node = ...
+  //this->current_node = ...
 }
 
 bool Ant::move() {
@@ -33,14 +33,15 @@ bool Ant::move() {
 }
 
 void Ant::step(Edge *edge) {
-  Solution->add_node(edge);
+  //solution->add_node(edge);
+  //node do visited, edge do feromonów, ogarnąć co lepiej
   this->current_node = edge->other_node(this->current_node);
   // ?
 }
 
 double Ant::heuristic_attrictiveness(Edge *choice) {
   unsigned no_visits = solution->get_no_visits(this->current_node->get_index());
-  return max(0, 1 + choice->get_weight() - gamma * no_visits);
+  return max(0.0, 1 + choice->get_weight() - gamma * no_visits);
 }
 
 double Ant::probability_of_choice(Edge *choice) {
@@ -53,9 +54,10 @@ bool Ant::can_choose_edge(Edge *edge) {
 
 void Ant::filter_choices(vector<Edge *> &potential_choices) {
   unsigned i = this->current_node->get_index();
-  for (unsigned j = 0, len = graph->size(); j < len; ++j) {
-    if (can_choose_edge(graph->get_edge(i, j))) {
-      potential_choices.push_back(edge)
+  for (unsigned j = 0, len = graph->get_size(); j < len; ++j) {
+    Edge *edge = graph->get_edge(i, j);
+    if (can_choose_edge(edge)) {
+      potential_choices.push_back(edge);
     }
   }
 }
@@ -64,12 +66,12 @@ Edge* Ant::choose_edge() {
   vector<Edge *> potential_choices;
   filter_choices(potential_choices);
 
-  unsigned size = potential_choices->size();
+  unsigned size = potential_choices.size();
 
   vector<double> distribution;
-  distribution.reserve(size)
+  distribution.reserve(size);
   for (unsigned i = 0; i < size; ++i) {
-    distribution.push_back(probability_of_choice(potential_choices[i]))
+    distribution.push_back(probability_of_choice(potential_choices[i]));
   }
 
   for (unsigned i = 1; i < size; ++i) {

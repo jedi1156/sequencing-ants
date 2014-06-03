@@ -17,6 +17,7 @@ public:
   vector<Node*> get_nodes() const { return nodes; }
   unsigned get_size() const { return size; }
   Edge*** get_matrix() const { return matrix; }
+  Edge* get_edge(int i, int j);
 
   void iterate();
 

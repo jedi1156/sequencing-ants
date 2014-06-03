@@ -37,7 +37,7 @@ double RandomNumberGenerator::random(double from, double to) {
 }
 
 int RandomNumberGenerator::roulette(vector<double> &distribution) {
-  unsigned = distribution.size();
+  unsigned size = distribution.size();
   if (size == 0) return -1;
 
   double choice = random(0, distribution[size - 1]);
