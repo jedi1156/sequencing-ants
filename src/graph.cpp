@@ -45,6 +45,10 @@ Edge* Graph::get_edge(int i, int j) {
   return matrix[i][j];
 }
 
+Edge* get_edge(Node *n1, Node *n2) {
+  return matrix[n1.get_index()][n2.get_intex()];
+}
+
 // TODO
 void Graph::iterate() {
   for (unsigned i = 0; i < size; i++) {
