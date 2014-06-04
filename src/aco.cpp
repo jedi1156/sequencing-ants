@@ -1,46 +1,29 @@
 #include "aco.hpp"
 
-// TODO
-ACO::ACO(Graph *graph, unsigned number_of_ants)
-: graph(graph) {
-  // create ants
-  // create ranking(ants)
+ACO::ACO(Graph *graph, ACOStrategy *strategy, unsigned number_of_ants)
+: Metaheuristic()
+, graph(graph)
+, strategy(strategy) {
+  strategy->set_colony(this);
+  ants = strategy->create_ants(graph);
+  ranking = new Ranking(ants);
 }
 
-// TODO
 ACO::~ACO() {
-  // destroy ants
-  // destroy ranking
+  delete strategy;
+  delete ranking;
+  for (unsigned i = 0, len = ants.size(); i < len; ++i) {
+    delete ants[i];
+  }
 }
 
-// TODO
 void ACO::optimize() {
-  /*
-  for ( iterations, term conditions ) {
-    iteration();
+  strategy->before_optimization(ants);
+  while (is_working()) {
+    strategy->perform_iteration();
     finish_iteration();
   }
-  */
-}
-
-// TODO
-void ACO::iteration() {
-  if (parallel) {
-    for ( t = threads[i] in threads ) {
-      t = thread(one_ant_iteration, ants[i])
-    }
-    for ( t in threads ) {
-      t.join()
-    }
-  } else {
-    for ( a in ants ) {
-      one_ant_iteration(a);
-    }
-  }
-}
-
-void ACO::one_ant_iteration(Ant *ant) {
-  ant->traverse_graph();
+  strategy->finish_optimization();
 }
 
 void ACO::finish_iteration() {
@@ -52,3 +35,4 @@ void ACO::update_pheromones() {
   ranking->prepare_pheromones();
   graph->iterate();
 }
+

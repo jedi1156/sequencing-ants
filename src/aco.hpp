@@ -5,24 +5,26 @@
 #include "ant.hpp"
 #include "graph.hpp"
 #include "ranking.hpp"
+#include "aco_strategy.hpp"
+#include "metaheuristic.hpp"
 
-class ACO {
+class ACO : public Metaheuristic {
 private:
   vector<Ant*> ants;
   Graph *graph;
+  ACOStrategy *strategy;
+  ACOParameters *params;
   Ranking *ranking;
 
-  bool parallel;
-  vector<thread> threads;
-
   void update_pheromones();
-  void iteration();
-  void one_ant_iteration(Ant *ant);
   void finish_iteration();
 public:
-  ACO(Graph *graph, unsigned number_of_ants);
+  ACO(Graph *graph, ACOStrategy *strategy);
   ~ACO();
   void optimize();
+
+  void notify();
+  void wait_until_start();
 };
 
 #endif

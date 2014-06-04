@@ -30,8 +30,7 @@ private:
 public:
   Ant(Graph *graph, double alpha, double beta, double gamma, unsigned max_solution_length);
 
-  // builds solution
-  void traverse_graph();
+  void traverse_graph(); // builds solution
   Solution *get_solution() { return solution; }
 };
 
