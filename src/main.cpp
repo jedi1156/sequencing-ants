@@ -23,7 +23,8 @@ int main(int argc, char* argv[]) {
     Graph *graph = new Graph(argv[1]);
     if (D) { cout << *graph << endl; }
 
-    ACOParameters params(ALPHA, BETA, GAMMA, NUMBER_OF_ANTS, MAX_SOLUTION_LENGTH);
+    ACOParameters params(ALPHA, BETA, GAMMA, NUMBER_OF_ANTS,
+                         MAX_SOLUTION_LENGTH, Q_PARAM, R_PARAM);
 
     ACOStrategy *strategy;
     if (parallel) {

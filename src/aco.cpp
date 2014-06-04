@@ -6,7 +6,7 @@ ACO::ACO(Graph *graph, ACOStrategy *strategy)
 , strategy(strategy) {
   strategy->set_colony(this);
   ants = strategy->create_ants(graph);
-  ranking = new Ranking(ants);
+  ranking = new Ranking(params, ants);
 }
 
 ACO::~ACO() {

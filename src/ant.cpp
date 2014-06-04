@@ -33,7 +33,7 @@ void Ant::set_beginning_position() {
 
   int choice = generator.roulette(distribution);
   current_node = nodes[choice];
-  solution = new Solution(current_node);
+  solution = new Solution(graph->get_size(), current_node);
 }
 
 bool Ant::move() {

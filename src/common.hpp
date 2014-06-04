@@ -19,6 +19,8 @@
 #define BETA 15
 #define GAMMA 1
 #define NUMBER_OF_ANTS 10
+#define Q_PARAM 1.0
+#define R_PARAM 1.0
 
 #define D 0
 

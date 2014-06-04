@@ -1,6 +1,8 @@
 #include "solution.hpp"
 
-Solution::Solution(Node *node) {
+Solution::Solution(unsigned no_nodes_in_graph, Node *node)
+: no_nodes_in_graph(no_nodes_in_graph)
+{
   nodes.push_back(node);
   no_unique_nodes = 1;
 }
@@ -10,7 +12,8 @@ Node* Solution::get_last_node() {
 }
 
 unsigned Solution::get_cummulated_length(Edge *edge) {
-  unsigned node_size = edge->other_node(get_last_node())->get_value().size()
+  // ref this??
+  unsigned node_size = edge->other_node(get_last_node())->get_value().size();
   return this->length + node_size - edge->get_weight();
 }
 
@@ -25,4 +28,14 @@ Node* Solution::add_edge(Edge *edge) {
   nodes.push_back(node);
   visit(node);
   return node;
+}
+
+double Solution::get_quality() {
+  return (double)no_unique_nodes / no_nodes_in_graph;
+}
+
+ostream& operator<<(ostream& os, const Solution& solution) {
+  os << endl;
+  // TODO: print it
+  return os;
 }
