@@ -1,5 +1,9 @@
 #include "aco_sequential_strategy.hpp"
 
+ACOSequentialStrategy::ACOSequentialStrategy(ACOParameters *params)
+: ACOStrategy(params)
+{}
+
 void ACOSequentialStrategy::setup_optimization() {
 }
 

@@ -23,7 +23,7 @@ public:
   , params(params)
   {}
 
-  virtual ~ACOStrategy();
+  virtual ~ACOStrategy() {}
 
   void set_colony(Metaheuristic *colony) { this->colony = colony; }
   bool is_working() { return colony->is_working(); }

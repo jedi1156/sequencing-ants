@@ -27,12 +27,12 @@ int main(int argc, char* argv[]) {
 
     ACOStrategy *strategy;
     if (parallel) {
-      strategy = new ACOParallelStrategy(params);
+      strategy = new ACOParallelStrategy(&params);
     } else {
-      strategy = new ACOSequentialStrategy(params);
+      strategy = new ACOSequentialStrategy(&params);
     }
 
-    metaheuristic = new ACO(g, strategy);
+    metaheuristic = new ACO(graph, strategy);
     metaheuristic->optimize();
 
     delete metaheuristic;

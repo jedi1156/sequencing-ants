@@ -9,8 +9,11 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include <thread>
 #include <map>
+
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
 #define ALPHA 2
 #define BETA 15

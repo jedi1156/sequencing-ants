@@ -16,9 +16,10 @@ private:
   void wait_until_start();
 public:
   AntThread(Notifiable *listener, Ant *ant);
-  bool is_ready() { return ready; }
+  void start();
   void join();
 
+  bool is_ready() { return ready; }
   void unready() { ready = false; }
 };
 

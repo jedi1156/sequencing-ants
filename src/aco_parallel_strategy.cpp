@@ -1,10 +1,16 @@
 #include "aco_parallel_strategy.hpp"
 
+ACOParallelStrategy::ACOParallelStrategy(ACOParameters *params)
+: ACOStrategy(params)
+{}
+
 void ACOParallelStrategy::setup_optimization() {
   start = false;
 
   for (unsigned i = 0, len = ants.size(); i < len; ++i) {
-    threads.push_back(new AntThread(this, ants[i]));
+    AntThread *ant_thread = new AntThread(this, ants[i]);
+    threads.push_back(ant_thread);
+    ant_thread->start();
   }
 }
 
