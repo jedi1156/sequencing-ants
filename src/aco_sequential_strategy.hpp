@@ -5,10 +5,11 @@
 #include "aco_strategy.hpp"
 
 class ACOSequentialStrategy : public ACOStrategy {
-public:
+protected:
   void setup_optimization();
-  void finish_optimization();
   void iteration();
+public:
+  void finish_optimization();
 };
 
 #endif

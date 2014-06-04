@@ -10,7 +10,7 @@ public:
   virtual ~Metaheuristic() {}
   bool is_working() { return working; }
   void terminate() { working = false; }
-  void optimize() = 0;
+  virtual void optimize() = 0;
 };
 
 #endif

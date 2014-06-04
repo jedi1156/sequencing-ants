@@ -2,8 +2,9 @@
 #define _INCLUDE_ACO_STRATEGY_HPP
 
 #include "common.hpp"
-#include "ants.hpp"
+#include "ant.hpp"
 #include "metaheuristic.hpp"
+#include "aco_parameters.hpp"
 
 class Graph;
 
@@ -14,28 +15,30 @@ protected:
   ACOParameters *params;
   vector<Ant*> ants;
 
+  virtual void setup_optimization() = 0;
+  virtual void iteration() = 0;
 public:
   ACOStrategy(ACOParameters *params)
-  : iteration(0)
+  : no_iteration(0)
   , params(params)
   {}
 
   virtual ~ACOStrategy();
 
   void set_colony(Metaheuristic *colony) { this->colony = colony; }
-  bool is_working() { colony->is_working(); }
+  bool is_working() { return colony->is_working(); }
 
   virtual vector<Ant *> &create_ants(Graph *graph) {
-    for (unsigned i = 0, len = params->get_number_of_ants; i < len; ++i) {
+    for (unsigned i = 0, len = params->get_number_of_ants(); i < len; ++i) {
       ants.push_back(
         new Ant(graph, params->get_alpha(), params->get_beta(),
           params->get_gamma(), params->get_max_solution_length()
+        )
       );
     }
     return ants;
   }
 
-  virtual void setup_optimization() = 0;
   void before_optimization() {
     no_iteration = 0;
     setup_optimization();
@@ -47,7 +50,6 @@ public:
     no_iteration += 1;
     iteration();
   }
-  virtual void iteration() = 0;
 
   unsigned get_no_iteration() { return no_iteration; }
 };

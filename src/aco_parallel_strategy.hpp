@@ -16,9 +16,12 @@ private:
   mutex ready_mutex;
 
   void wake_up_threads();
-public:
+
+protected:
   void setup_optimization();
   void iteration();
+
+public:
   void finish_optimization();
 
   void notify();

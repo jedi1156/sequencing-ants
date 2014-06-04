@@ -1,6 +1,6 @@
 #include "aco.hpp"
 
-ACO::ACO(Graph *graph, ACOStrategy *strategy, unsigned number_of_ants)
+ACO::ACO(Graph *graph, ACOStrategy *strategy)
 : Metaheuristic()
 , graph(graph)
 , strategy(strategy) {
@@ -18,7 +18,7 @@ ACO::~ACO() {
 }
 
 void ACO::optimize() {
-  strategy->before_optimization(ants);
+  strategy->before_optimization();
   while (is_working()) {
     strategy->perform_iteration();
     finish_iteration();
