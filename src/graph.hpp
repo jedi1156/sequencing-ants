@@ -18,7 +18,6 @@ public:
   unsigned get_size() const { return size; }
   Edge*** get_matrix() const { return matrix; }
   Edge* get_edge(int i, int j);
-  Edge* get_edge(Node *n1, Node *n2);
   double rate_node_as_first(Node *node);
 
   void iterate();
