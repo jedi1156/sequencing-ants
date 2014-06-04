@@ -12,11 +12,12 @@ protected:
   unsigned max_solution_length;
   double q;           // new pheromones quantifier
   double r;           // best part of ants that has impact on pheromones [0..1]
+  double ro;          // pheromone evaporation parameter
 
 public:
   ACOParameters(double alpha, double beta, double gamma,
     unsigned number_of_ants, unsigned max_solution_length,
-    double q, double r)
+    double q, double r, double ro)
   : alpha(alpha)
   , beta(beta)
   , gamma(gamma)
@@ -24,6 +25,7 @@ public:
   , max_solution_length(max_solution_length)
   , q(q)
   , r(r)
+  , ro(ro)
   {}
 
   virtual ~ACOParameters() {}
@@ -35,6 +37,7 @@ public:
   unsigned get_max_solution_length() { return max_solution_length; }
   double get_q() { return q; }
   unsigned get_no_ranking_ants() { return round(max(0.0, min(r, 1.0)) * number_of_ants); }
+  double get_ro() { return q; }
 };
 
 #endif

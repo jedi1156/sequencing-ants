@@ -19,7 +19,7 @@ private:
   void update_pheromones();
   void finish_iteration();
 public:
-  ACO(Graph *graph, ACOStrategy *strategy);
+  ACO(Graph *graph, ACOStrategy *strategy, ACOParameters *params);
   ~ACO();
   void optimize();
 

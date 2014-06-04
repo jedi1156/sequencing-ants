@@ -1,9 +1,10 @@
 #include "aco.hpp"
 
-ACO::ACO(Graph *graph, ACOStrategy *strategy)
+ACO::ACO(Graph *graph, ACOStrategy *strategy, ACOParameters *params)
 : Metaheuristic()
 , graph(graph)
-, strategy(strategy) {
+, strategy(strategy)
+, params(params) {
   strategy->set_colony(this);
   ants = strategy->create_ants(graph);
   ranking = new Ranking(params, ants);
@@ -33,6 +34,6 @@ void ACO::finish_iteration() {
 
 void ACO::update_pheromones() {
   ranking->prepare_pheromones();
-  graph->iterate();
+  graph->iterate(params->get_ro());
 }
 

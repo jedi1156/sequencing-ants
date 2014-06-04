@@ -22,6 +22,7 @@
 #define NUMBER_OF_ANTS 10
 #define Q_PARAM 1.0
 #define R_PARAM 1.0
+#define RO 0.6
 
 #define D 0
 

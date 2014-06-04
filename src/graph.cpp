@@ -45,11 +45,10 @@ Edge* Graph::get_edge(int i, int j) {
   return matrix[i][j];
 }
 
-// TODO
-void Graph::iterate() {
+void Graph::iterate(double ro) {
   for (unsigned i = 0; i < size; i++) {
     for (unsigned j = 0; j < size; j++) {
-      matrix[i][j]->iterate();
+      matrix[i][j]->iterate(ro);
     }
   }
 }

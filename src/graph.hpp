@@ -20,7 +20,7 @@ public:
   Edge* get_edge(int i, int j);
   double rate_node_as_first(Node *node);
 
-  void iterate();
+  void iterate(double ro);
 
   friend ostream& operator<<(ostream& os, const Graph& graph);
 };

@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     if (D) { cout << *graph << endl; }
 
     ACOParameters params(ALPHA, BETA, GAMMA, NUMBER_OF_ANTS,
-                         MAX_SOLUTION_LENGTH, Q_PARAM, R_PARAM);
+                         MAX_SOLUTION_LENGTH, Q_PARAM, R_PARAM, RO);
 
     ACOStrategy *strategy;
     if (parallel) {
@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
       strategy = new ACOSequentialStrategy(&params);
     }
 
-    metaheuristic = new ACO(graph, strategy);
+    metaheuristic = new ACO(graph, strategy, &params);
     metaheuristic->optimize();
 
     delete metaheuristic;

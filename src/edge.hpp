@@ -24,7 +24,7 @@ public:
 
   double get_pheromones() { return pheromones; }
   void add_pheromones(double ph);
-  void iterate(/* params? */);
+  void iterate(double ro);
 };
 
 #endif

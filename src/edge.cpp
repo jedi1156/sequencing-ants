@@ -30,7 +30,7 @@ void Edge::add_pheromones(double ph) {
   next_iteration_pheromones += ph;
 }
 
-void Edge::iterate(/* params? */) {
-  // pheromones = WZOR(next_iteration_pheromones);
+void Edge::iterate(double ro) {
+  pheromones = (1 - ro) * pheromones + next_iteration_pheromones;
   next_iteration_pheromones = 0;
 }
