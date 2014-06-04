@@ -11,6 +11,8 @@ private:
   vector<Ant *> ants;
   unsigned no_ranking_ants;
 
+  Solution *best_solution;
+
   void prepare_pheromones_for_one_ant(Ant *ant, unsigned ranking_position);
 public:
   Ranking(ACOParameters *params, vector<Ant *> &ants);
@@ -20,6 +22,7 @@ public:
   void update();
 
   static bool ants_comparator(Ant *a1, Ant *a2);
+  static bool solutions_comparator(Solution *s1, Solution *s2);
 };
 
 #endif

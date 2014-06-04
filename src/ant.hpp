@@ -32,7 +32,6 @@ public:
 
   void traverse_graph(); // builds solution
   Solution *get_solution() { return solution; }
-  double get_solution_quality() { return solution->get_quality(); }
 };
 
 #endif
