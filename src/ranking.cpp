@@ -7,9 +7,12 @@ Ranking::Ranking(ACOParameters *params, vector<Ant *> &ants)
   no_ranking_ants = params->get_no_ranking_ants();
 }
 
-// TODO
+bool Ranking::ants_comparator(Ant *a1, Ant *a2) {
+  return a1->get_solution_quality() < a2->get_solution_quality();
+}
+
 void Ranking::update() {
-  // sort ants by solution value
+  sort(ants.begin(), ants.end(), Ranking::ants_comparator);
   // update best-so-far solution (solutions?)
 }
 

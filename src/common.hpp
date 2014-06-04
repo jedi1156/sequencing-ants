@@ -4,6 +4,7 @@
 #include <signal.h>
 #include <unistd.h>
 
+#include <algorithm>
 #include <string>
 #include <vector>
 #include <iostream>
