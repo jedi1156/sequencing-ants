@@ -1,12 +1,12 @@
-CXX=./colorgcc.pl
-CXX_FLAGS=-Wall -g -std=c++11 -Wreorder
+CXX=g++-4.9
+CXX_FLAGS=-Wall -g -std=c++11
 LIBS=-pthread
 
 TARGET=sequencing-ants
 
-INTERFACES=common
+INTERFACES=common aco_strategy notifiable node metaheuristic aco_parameters
 
-SUBTARGETS=ant graph edge node random_number_generator aco ranking solution
+SUBTARGETS=ant graph edge random_number_generator aco ranking solution aco_sequential_strategy aco_parallel_strategy ant_thread
 
 TARGET_FILES=$(SUBTARGETS) main
 HEADER_FILES=$(SUBTARGETS) $(INTERFACES)
