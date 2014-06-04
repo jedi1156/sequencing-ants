@@ -14,13 +14,11 @@ private:
   unsigned length;
 
   Node* get_last_node();
+  void visit(Node *node);
 
 public:
-  Solution();
-
+  Solution(Node *node);
   Node* add_edge(Edge *edge);
-
-  void visit(Node *node) { no_visits[node] += 1; }
   unsigned get_no_visits(Node *node) { return no_visits[node]; }
   unsigned get_cummulated_length(Edge *);
 };

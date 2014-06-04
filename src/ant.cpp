@@ -20,13 +20,11 @@ void Ant::traverse_graph() {
   }
 }
 
-
-
 void Ant::set_beginning_position() {
-  //this->current_node = ...
   vector<Node*> nodes = graph->get_nodes();
   vector<double> distribution;
-  for(unsigned i = 0; i < nodes.size(); i++) {
+  distribution.reserve(nodes.size());
+  for(unsigned i = 0; i < nodes.size(); ++i) {
     distribution.push_back(graph->rate_node_as_first(nodes[i]));
   }
   for (unsigned i = 1; i < nodes.size(); ++i) {
@@ -34,7 +32,8 @@ void Ant::set_beginning_position() {
   }
 
   int choice = generator.roulette(distribution);
-  this->current_node =  nodes[choice];
+  current_node = nodes[choice];
+  solution = new Solution(current_node);
 }
 
 bool Ant::move() {
