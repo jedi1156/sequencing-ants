@@ -18,6 +18,7 @@ private:
   Solution *solution;
   RandomNumberGenerator generator;
 
+  double rate_node_as_first(Node *node);
   void set_beginning_position();
   bool move();
   void step(Edge *edge);

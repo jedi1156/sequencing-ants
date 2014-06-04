@@ -20,8 +20,21 @@ void Ant::traverse_graph() {
   }
 }
 
+
+
 void Ant::set_beginning_position() {
   //this->current_node = ...
+  vector<Node*> nodes = graph->get_nodes();
+  vector<double> distribution;
+  for(unsigned i = 0; i < nodes.size(); i++) {
+    distribution.push_back(graph->rate_node_as_first(nodes[i]));
+  }
+  for (unsigned i = 1; i < nodes.size(); ++i) {
+    distribution[i] += distribution[i - 1];
+  }
+
+  int choice = generator.roulette(distribution);
+  this->current_node =  nodes[choice];
 }
 
 bool Ant::move() {
@@ -33,14 +46,12 @@ bool Ant::move() {
 }
 
 void Ant::step(Edge *edge) {
-  //solution->add_node(edge);
-  //node do visited, edge do feromonów, ogarnąć co lepiej
-  this->current_node = edge->other_node(this->current_node);
-  // ?
+  this->current_node = solution->add_edge(edge);
+
 }
 
 double Ant::heuristic_attrictiveness(Edge *choice) {
-  unsigned no_visits = solution->get_no_visits(this->current_node->get_index());
+  unsigned no_visits = solution->get_no_visits(current_node);
   return max(0.0, 1 + choice->get_weight() - gamma * no_visits);
 }
 

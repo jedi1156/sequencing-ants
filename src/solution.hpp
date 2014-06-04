@@ -7,9 +7,10 @@
 
 class Solution {
 private:
-  vector<Edge*> nodes;
+  vector<Edge*> edges;
+  vector<Node*> nodes;
   unsigned no_unique_nodes;
-  vector<unsigned> no_visits;
+  map<Node*, unsigned> no_visits;
   unsigned length;
 
   Node* get_last_node();
@@ -17,10 +18,10 @@ private:
 public:
   Solution();
 
-  void add_node(Node *node);
+  Node* add_edge(Edge *edge);
 
-  void visit(unsigned i) { no_visits[i] += 1; }
-  unsigned get_no_visits(unsigned i) { return no_visits[i]; }
+  void visit(Node *node) { no_visits[node] += 1; }
+  unsigned get_no_visits(Node *node) { return no_visits[node]; }
   unsigned get_cummulated_length(Edge *);
 };
 

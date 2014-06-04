@@ -9,6 +9,11 @@ unsigned Solution::get_cummulated_length(Edge *edge) {
   return this->length + node_size - edge->get_weight();
 }
 
-void add_node(Node *node) {
-  // TODO
+Node* Solution::add_edge(Edge *edge) {
+  edges.push_back(edge);
+  if(!nodes.size()) {
+    nodes.push_back(edge->get_n1());
+  }
+  nodes.push_back(edge->get_n2());
+  return edge->get_n2();
 }

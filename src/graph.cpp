@@ -54,6 +54,16 @@ void Graph::iterate() {
   }
 }
 
+double Graph::rate_node_as_first(Node *node) {
+  unsigned in_sum = 0;
+  unsigned out_sum = 0;
+  for(unsigned i = 0; i < size; i++) {
+    out_sum += matrix[node->get_index()][i]->get_weight();
+    in_sum += matrix[i][node->get_index()]->get_weight();
+  }
+  return out_sum - in_sum;
+}
+
 ostream& operator<<(ostream& os, const Graph& g) {
   os << "Graph[size="<<g.get_size()<<"]";
   os << " (";
