@@ -6,6 +6,7 @@ Ant::Ant(Graph *graph, double alpha, double beta, double gamma, unsigned max_sol
 , beta(beta)
 , gamma(gamma)
 , max_solution_length(max_solution_length)
+, solution(NULL)
 , generator()
 {}
 
@@ -17,6 +18,13 @@ void Ant::traverse_graph() {
   while(term_condition) {
     term_condition = term_condition && move();
     if (D >= 5) { cout << *solution << endl; }
+  }
+}
+
+void Ant::free_solution() {
+  if (solution) {
+    delete solution;
+    solution = NULL;
   }
 }
 

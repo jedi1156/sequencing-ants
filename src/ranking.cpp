@@ -9,17 +9,27 @@ Ranking::Ranking(ACOParameters *params, vector<Ant *> &ants)
 }
 
 
-// memory leak
 void Ranking::update() {
   sort(ants.begin(), ants.end(), Ranking::ants_comparator);
 
+  if (D >= 5) { cout << "Ranking> Setting best" << endl; }
   if ((best_solution == NULL) || (solutions_comparator(best_solution, ants.front()->get_solution()))) {
-    best_solution = ants.front()->get_solution();
+    best_solution = new Solution(*ants.front()->get_solution());
   }
 }
 
+void Ranking::free_memory() {
+  if (D >= 5) { cout << "Ranking> freeing solutions" << endl; }
+  for (unsigned i = 0; i < no_ranking_ants; ++i) {
+    if (D >= 6) { cout << "Ranking> freeing #" << i << endl; }
+    ants[i]->free_solution();
+    if (D >= 6) { cout << "Ranking> freed #" << i << endl; }
+  }
+  if (D >= 5) { cout << "Ranking> freed" << endl; }
+}
+
 void Ranking::prepare_pheromones() {
-  for (unsigned i = 0; i < no_ranking_ants; i++) {
+  for (unsigned i = 0; i < no_ranking_ants; ++i) {
     prepare_pheromones_for_one_ant(ants[i], i);
   }
 }

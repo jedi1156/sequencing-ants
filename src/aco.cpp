@@ -12,6 +12,7 @@ ACO::ACO(Graph *graph, ACOStrategy *strategy, ACOParameters *params)
 
 ACO::~ACO() {
   delete strategy;
+  if (get_best_solution()) { delete get_best_solution(); }
   delete ranking;
   for (unsigned i = 0, len = ants.size(); i < len; ++i) {
     delete ants[i];
@@ -22,7 +23,11 @@ void ACO::optimize() {
   if (D) { cout << "Before optimization" << endl; }
   strategy->before_optimization();
   while (is_working()) {
-    if (D) { cout << "Iteration #" << strategy->get_no_iteration() << endl; }
+    if (D) {
+      cout << "Iteration #" << strategy->get_no_iteration() << ":\tquality:\t";
+      Solution *solution = get_best_solution();
+      cout << (solution ? solution->get_quality() : 0.0) << endl;
+    }
     strategy->perform_iteration();
     finish_iteration();
   }
@@ -35,6 +40,7 @@ void ACO::optimize() {
 void ACO::finish_iteration() {
   ranking->update();
   update_pheromones();
+  ranking->free_memory();
 }
 
 void ACO::update_pheromones() {

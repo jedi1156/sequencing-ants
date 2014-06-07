@@ -9,6 +9,7 @@
 class ACOParallelStrategy : public ACOStrategy, public Notifiable {
 private:
   vector<AntThread*> threads;
+  bool working;
 
   mutex ready_mutex;
   condition_variable start_condition;
@@ -29,7 +30,7 @@ public:
   void notify();
   void wait_until_start(Worker *worker);
 
-  bool is_working() { return ACOStrategy::is_working(); }
+  bool is_working() { return working; }
 };
 
 #endif

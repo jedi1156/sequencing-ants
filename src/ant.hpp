@@ -31,6 +31,7 @@ public:
   Ant(Graph *graph, double alpha, double beta, double gamma, unsigned max_solution_length);
 
   void traverse_graph(); // builds solution
+  void free_solution();
   Solution *get_solution() { return solution; }
 };
 

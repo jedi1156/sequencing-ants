@@ -25,6 +25,7 @@ public:
 
   static bool ants_comparator(Ant *a1, Ant *a2);
   static bool solutions_comparator(Solution *s1, Solution *s2);
+  void free_memory();
 };
 
 #endif

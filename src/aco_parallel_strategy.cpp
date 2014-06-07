@@ -2,6 +2,7 @@
 
 ACOParallelStrategy::ACOParallelStrategy(ACOParameters *params)
 : ACOStrategy(params)
+, working(true)
 , ready_mutex()
 , start_condition()
 , ready_condition()
@@ -13,11 +14,14 @@ void ACOParallelStrategy::setup_optimization() {
     threads.push_back(ant_thread);
     ant_thread->start();
   }
+  working = ACOStrategy::is_working();
 }
 
 void ACOParallelStrategy::finish_optimization() {
+  working = false;
   wake_up_threads();
 
+  wait_for_all();
   for (unsigned i = 0, len = threads.size(); i < len; ++i) {
     threads[i]->join();
   }
