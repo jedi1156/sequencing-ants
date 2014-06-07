@@ -4,7 +4,7 @@ Edge::Edge(Node* n1, Node* n2) {
   this->n1 = n1;
   this->n2 = n2;
   weight = calculate_overlay(n1->get_value(), n2->get_value());
-  if(D) if(weight > 0) cout << "adding edge " << n1->get_value() << "->"<< n2->get_value() << "("<<weight<<")"<<endl;
+  if(D >= 4) if(weight > 0) cout << "adding edge " << n1->get_value() << "->"<< n2->get_value() << "("<<weight<<")"<<endl;
 }
 
 unsigned Edge::calculate_overlay(string s1, string s2) {
