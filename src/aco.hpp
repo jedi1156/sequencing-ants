@@ -25,6 +25,8 @@ public:
 
   void notify();
   void wait_until_start();
+
+  Solution *get_best_solution() { return ranking->get_best_solution(); }
 };
 
 #endif

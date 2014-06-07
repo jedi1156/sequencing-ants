@@ -28,6 +28,8 @@ void ACO::optimize() {
   }
   if (D) { cout << "Finishing" << endl; }
   strategy->finish_optimization();
+
+  cout << "Best found solution:" << endl << *get_best_solution() << endl;
 }
 
 void ACO::finish_iteration() {
