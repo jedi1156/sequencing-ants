@@ -65,7 +65,7 @@ void Ant::filter_choices(vector<Edge *> &potential_choices) {
   unsigned i = this->current_node->get_index();
   for (unsigned j = 0, len = graph->get_size(); j < len; ++j) {
     Edge *edge = graph->get_edge(i, j);
-    if (can_choose_edge(edge)) {
+    if ((i != j) && can_choose_edge(edge)) {
       potential_choices.push_back(edge);
     }
   }
@@ -76,6 +76,7 @@ Edge* Ant::choose_edge() {
   filter_choices(potential_choices);
 
   unsigned size = potential_choices.size();
+  if (size == 0) return NULL;
 
   vector<double> distribution;
   distribution.reserve(size);
@@ -88,6 +89,5 @@ Edge* Ant::choose_edge() {
   }
 
   int choice = generator.roulette(distribution);
-  if (choice < 0) return NULL;
   return potential_choices[choice];
 }

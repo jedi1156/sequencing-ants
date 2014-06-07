@@ -16,7 +16,6 @@ private:
 
 public:
   Edge(Node* n1, Node* n2);
-  Node* other_node(Node* node);
   unsigned get_weight() const { return weight; }
   Node* get_n1() const { return n1; }
   Node* get_n2() const { return n2; }
