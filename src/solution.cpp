@@ -31,13 +31,13 @@ Node* Solution::add_edge(Edge *edge) {
   return node;
 }
 
-double Solution::get_quality() {
+double Solution::get_quality() const {
   return (double)no_unique_nodes / no_nodes_in_graph;
 }
 
 ostream& operator<<(ostream& os, const Solution& solution) {
   vector<Node *> nodes = solution.get_nodes();
-  os << "Solution(" << nodes.size() << "), length: " << solution.get_length() << endl;
+  os << "Solution(" << nodes.size() << ", " << solution.get_quality() << "), length: " << solution.get_length() << endl;
   for (unsigned i = 0, len = nodes.size(); i < len; ++i) {
     os << nodes[i]->get_index() << endl;
   }

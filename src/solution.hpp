@@ -22,7 +22,7 @@ public:
   Node* add_edge(Edge *edge);
   unsigned get_no_visits(Node *node) { return no_visits[node]; }
   unsigned get_cummulated_length(Edge *edge) const;
-  double get_quality();
+  double get_quality() const;
 
   unsigned get_length() const { return length; }
 
