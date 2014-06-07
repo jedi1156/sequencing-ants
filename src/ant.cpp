@@ -14,9 +14,9 @@ void Ant::traverse_graph() {
   bool term_condition = true;
   set_beginning_position();
 
-  // create solution
   while(term_condition) {
     term_condition = term_condition && move();
+    if (D >= 5) { cout << *solution << endl; }
   }
 }
 
@@ -46,7 +46,6 @@ bool Ant::move() {
 
 void Ant::step(Edge *edge) {
   this->current_node = solution->add_edge(edge);
-
 }
 
 double Ant::heuristic_attrictiveness(Edge *choice) {

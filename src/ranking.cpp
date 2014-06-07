@@ -8,6 +8,8 @@ Ranking::Ranking(ACOParameters *params, vector<Ant *> &ants)
   no_ranking_ants = params->get_no_ranking_ants();
 }
 
+
+// memory leak
 void Ranking::update() {
   sort(ants.begin(), ants.end(), Ranking::ants_comparator);
 

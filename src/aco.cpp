@@ -19,11 +19,14 @@ ACO::~ACO() {
 }
 
 void ACO::optimize() {
+  if (D) { cout << "Before optimization" << endl; }
   strategy->before_optimization();
   while (is_working()) {
+    if (D) { cout << "Iteration #" << strategy->get_no_iteration() << endl; }
     strategy->perform_iteration();
     finish_iteration();
   }
+  if (D) { cout << "Finishing" << endl; }
   strategy->finish_optimization();
 }
 

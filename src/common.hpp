@@ -24,7 +24,7 @@
 #define R_PARAM 1.0
 #define RO 0.6
 
-#define D 0
+#define D 4
 
 using namespace std;
 

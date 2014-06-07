@@ -35,7 +35,10 @@ double Solution::get_quality() {
 }
 
 ostream& operator<<(ostream& os, const Solution& solution) {
-  os << endl;
-  // TODO: print it
+  vector<Node *> nodes = solution.get_nodes();
+  os << "Solution(" << nodes.size() << "), length: " << solution.get_length() << endl;
+  for (unsigned i = 0, len = nodes.size(); i < len; ++i) {
+    os << nodes[i]->get_index() << endl;
+  }
   return os;
 }
