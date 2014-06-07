@@ -4,8 +4,9 @@
 #include "common.hpp"
 #include "notifiable.hpp"
 #include "ant.hpp"
+#include "worker.hpp"
 
-class AntThread {
+class AntThread : public Worker {
 private:
   Notifiable *listener;
   Ant *ant;

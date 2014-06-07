@@ -15,10 +15,12 @@ void AntThread::routine() {
     listener->notify();
     wait_until_start();
   }
+  ready = true;
+  listener->notify();
 }
 
 void AntThread::wait_until_start() {
-  listener->wait_until_start();
+  listener->wait_until_start(this);
 }
 
 void AntThread::start() {

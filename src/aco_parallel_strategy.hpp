@@ -4,18 +4,18 @@
 #include "common.hpp"
 #include "aco_strategy.hpp"
 #include "ant_thread.hpp"
+#include "worker.hpp"
 
 class ACOParallelStrategy : public ACOStrategy, public Notifiable {
 private:
   vector<AntThread*> threads;
 
-  bool start;
+  mutex ready_mutex;
   condition_variable start_condition;
   condition_variable ready_condition;
-  mutex start_mutex;
-  mutex ready_mutex;
 
   void wake_up_threads();
+  void wait_for_all();
 
 protected:
   void setup_optimization();
@@ -27,7 +27,7 @@ public:
   void finish_optimization();
 
   void notify();
-  void wait_until_start();
+  void wait_until_start(Worker *worker);
 
   bool is_working() { return ACOStrategy::is_working(); }
 };

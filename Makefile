@@ -4,7 +4,7 @@ LIBS=-pthread
 
 TARGET=sequencing-ants
 
-INTERFACES=common aco_strategy notifiable node metaheuristic aco_parameters
+INTERFACES=common aco_strategy notifiable worker node metaheuristic aco_parameters
 
 SUBTARGETS=ant graph edge random_number_generator aco ranking solution aco_sequential_strategy aco_parallel_strategy ant_thread
 
