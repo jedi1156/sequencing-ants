@@ -7,7 +7,7 @@
 
 #define PARALLEL true
 
-#define MAX_SOLUTION_LENGTH 100
+#define MAX_SOLUTION_LENGTH 509
 
 Metaheuristic *metaheuristic = NULL;
 void terminte_work(int sig) {

@@ -9,7 +9,7 @@ void ACOSequentialStrategy::setup_optimization() {
 
 void ACOSequentialStrategy::iteration() {
   for (unsigned i = 0, len = ants.size(); i < len; ++i) {
-    if (D) { cout << "Ant #" << i << " traversing graph" << endl; }
+    if (D >= 4) { cout << "Ant #" << i << " traversing graph" << endl; }
     ants[i]->traverse_graph();
   }
 }
