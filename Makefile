@@ -1,10 +1,10 @@
-CXX=g++-4.9
+CXX=g++
 CXX_FLAGS=-Wall -g -std=c++11
 LIBS=-pthread
 
 TARGET=sequencing-ants
 
-INTERFACES=common aco_strategy notifiable worker node metaheuristic aco_parameters
+INTERFACES=common aco_strategy notifiable worker node metaheuristic aco_parameters INI
 
 SUBTARGETS=ant graph edge random_number_generator aco ranking solution aco_sequential_strategy aco_parallel_strategy ant_thread
 

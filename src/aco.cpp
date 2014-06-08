@@ -20,7 +20,6 @@ ACO::~ACO() {
 }
 
 void ACO::optimize() {
-  if (D) { cout << "Before optimization" << endl; }
   strategy->before_optimization();
   while (is_working()) {
     if (D) {
@@ -31,10 +30,7 @@ void ACO::optimize() {
     strategy->perform_iteration();
     finish_iteration();
   }
-  if (D) { cout << "Finishing" << endl; }
   strategy->finish_optimization();
-
-  cout << "Best found solution:" << endl << *get_best_solution() << endl;
 }
 
 void ACO::finish_iteration() {
