@@ -29,8 +29,8 @@ void Edge::add_pheromones(double ph) {
   next_iteration_pheromones += ph;
 }
 
-void Edge::iterate(double ro) {
-  pheromones = (1 - ro) * pheromones + next_iteration_pheromones;
+void Edge::iterate(double ro, double maximum) {
+  pheromones = min(max(1.0, (1 - ro) * pheromones + next_iteration_pheromones), maximum);
   next_iteration_pheromones = 0;
 }
 

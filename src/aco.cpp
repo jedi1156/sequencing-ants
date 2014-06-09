@@ -45,6 +45,6 @@ void ACO::finish_iteration() {
 
 void ACO::update_pheromones() {
   ranking->prepare_pheromones();
-  graph->iterate(params->get_ro());
+  graph->iterate(params->get_ro(), params->get_max_pheromones());
 }
 

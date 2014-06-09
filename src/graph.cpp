@@ -47,11 +47,17 @@ Edge* Graph::get_edge(int i, int j) {
   return matrix[i][j];
 }
 
-void Graph::iterate(double ro) {
+unsigned Graph::get_node_size() {
+  Node *node = nodes.front();
+  if (!node) { return 0; }
+  return node->get_length();
+}
+
+void Graph::iterate(double ro, double max_pheromones) {
   double sum_ph = 0;
   for (unsigned i = 0; i < size; i++) {
     for (unsigned j = 0; j < size; j++) {
-      matrix[i][j]->iterate(ro);
+      matrix[i][j]->iterate(ro, max_pheromones);
       if (debug >= 2) { sum_ph += matrix[i][j]->get_pheromones(); }
     }
   }

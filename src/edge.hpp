@@ -23,7 +23,7 @@ public:
 
   double get_pheromones() const { return pheromones; }
   void add_pheromones(double ph);
-  void iterate(double ro);
+  void iterate(double ro, double maximum);
 
   friend ostream& operator<<(ostream& os, const Edge& edge);
 };
