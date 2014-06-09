@@ -23,6 +23,8 @@ public:
   ~ACO();
   void optimize();
 
+  Solution *get_best_solution() { return ranking->get_best_solution(); }
+
   void notify();
   void wait_until_start();
 };
