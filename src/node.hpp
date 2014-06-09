@@ -13,8 +13,9 @@ public:
     value(value), index(index) {
   }
 
-  string get_value() { return value; }
-  unsigned get_index() { return index; }
+  string get_value() const { return value; }
+  unsigned get_length() const { return value.size(); }
+  unsigned get_index() const { return index; }
 };
 
 #endif
