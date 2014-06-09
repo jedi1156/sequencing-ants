@@ -37,7 +37,8 @@ void Ranking::prepare_pheromones() {
 }
 
 double Ranking::calculate_additional_pheromones(Solution *solution, unsigned ranking_position) {
-  return params->get_q() * (ants.size() - ranking_position) * solution->get_quality();
+  double position_multiplier = ((double)(ants.size() - ranking_position)) * 2 / (ants.size() * (ants.size() + 1));
+  return params->get_q() * position_multiplier * solution->get_quality();
 }
 
 void Ranking::prepare_pheromones_for_one_solution(Solution *solution, unsigned ranking_position) {
