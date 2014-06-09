@@ -27,12 +27,14 @@ void ACO::optimize() {
     if (debug) {
       cout << "Iteration #" << strategy->get_no_iteration() << ":\tquality:\t";
       Solution *solution = get_best_solution();
-      cout << (solution ? solution->get_quality() : 0.0) << endl;
+      cout << (solution ? solution->print_header() : "0.0") << endl;
     }
     strategy->perform_iteration();
     finish_iteration();
   }
   strategy->finish_optimization();
+
+  cout << "Best found solution:" << endl << *get_best_solution() << endl;
 }
 
 void ACO::finish_iteration() {
