@@ -21,9 +21,8 @@ unsigned Edge::calculate_overlay(string s1, string s2) {
   return max;
 }
 
-ostream& operator<<(ostream& os, const Edge& e) {
-  os << "Edge["<<e.get_n1()->get_value() << e.get_n2()->get_value()<<"]";
-  return os;
+double Edge::get_normalized_weight() const {
+  return (double)weight / n1->get_length();
 }
 
 void Edge::add_pheromones(double ph) {
@@ -33,4 +32,9 @@ void Edge::add_pheromones(double ph) {
 void Edge::iterate(double ro) {
   pheromones = (1 - ro) * pheromones + next_iteration_pheromones;
   next_iteration_pheromones = 0;
+}
+
+ostream& operator<<(ostream& os, const Edge& e) {
+  os << "Edge[" << e.get_n1()->get_value() << " - " << e.get_n2()->get_value() << ", " << e.get_pheromones() << "]";
+  return os;
 }
