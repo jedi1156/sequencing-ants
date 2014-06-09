@@ -5,6 +5,7 @@ Solution::Solution(unsigned no_nodes_in_graph, Node *node)
 , length(0)
 {
   nodes.push_back(node);
+  length = node->get_length();
   no_unique_nodes = 1;
 }
 
