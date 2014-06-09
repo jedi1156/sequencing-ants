@@ -13,7 +13,7 @@ private:
 
   Solution *best_solution;
 
-  void prepare_pheromones_for_one_ant(Ant *ant, unsigned ranking_position);
+  void prepare_pheromones_for_one_solution(Solution *solution, unsigned ranking_position);
 public:
   Ranking(ACOParameters *params, vector<Ant *> &ants);
 

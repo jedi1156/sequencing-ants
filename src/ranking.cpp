@@ -32,7 +32,7 @@ void Ranking::free_memory() {
 
 void Ranking::prepare_pheromones() {
   for (unsigned i = 0; i < no_ranking_ants; ++i) {
-    prepare_pheromones_for_one_ant(ants[i], i);
+    prepare_pheromones_for_one_solution(ants[i]->get_solution(), i);
   }
 }
 
@@ -40,8 +40,7 @@ double Ranking::calculate_additional_pheromones(Solution *solution, unsigned ran
   return params->get_q() * (ants.size() - ranking_position) * solution->get_quality();
 }
 
-void Ranking::prepare_pheromones_for_one_ant(Ant *ant, unsigned ranking_position) {
-  Solution *solution = ant->get_solution();
+void Ranking::prepare_pheromones_for_one_solution(Solution *solution, unsigned ranking_position) {
   double additional_pheromones = calculate_additional_pheromones(solution, ranking_position);
   if (debug >= 4) { cout << "Ranking> additional pheromones for ant#" << ranking_position << ":\t" << additional_pheromones << endl; }
 
