@@ -48,11 +48,14 @@ Edge* Graph::get_edge(int i, int j) {
 }
 
 void Graph::iterate(double ro) {
+  double sum_ph = 0;
   for (unsigned i = 0; i < size; i++) {
     for (unsigned j = 0; j < size; j++) {
       matrix[i][j]->iterate(ro);
+      if (debug >= 2) { sum_ph += matrix[i][j]->get_pheromones(); }
     }
   }
+  if (debug >= 2) { cout << "Sum of pheromonoes: " << sum_ph << endl; }
 }
 
 double Graph::rate_node_as_first(Node *node) {
