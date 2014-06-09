@@ -4,9 +4,9 @@ LIBS=-pthread
 
 TARGET=sequencing-ants
 
-INTERFACES=common aco_strategy notifiable worker node metaheuristic aco_parameters INI
+INTERFACES=common aco_strategy notifiable worker node metaheuristic INI
 
-SUBTARGETS=ant graph edge random_number_generator aco ranking solution aco_sequential_strategy aco_parallel_strategy ant_thread
+SUBTARGETS=ant graph edge random_number_generator aco ranking solution aco_sequential_strategy aco_parallel_strategy ant_thread aco_parameters
 
 TARGET_FILES=$(SUBTARGETS) main
 HEADER_FILES=$(SUBTARGETS) $(INTERFACES)
