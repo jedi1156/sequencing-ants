@@ -34,6 +34,9 @@ void Ranking::prepare_pheromones() {
   for (unsigned i = 0; i < no_ranking_ants; ++i) {
     prepare_pheromones_for_one_solution(ants[i]->get_solution(), i);
   }
+  if (params->get_amplify_best() > 0 && best_solution) {
+    prepare_pheromones_for_one_solution(best_solution, (1.0 - params->get_amplify_best()) * ants.size());
+  }
 }
 
 double Ranking::calculate_additional_pheromones(Solution *solution, unsigned ranking_position) {
