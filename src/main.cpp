@@ -91,7 +91,6 @@ int main(int argc, char* argv[]) {
   metaheuristic = new ACO(graph, strategy, &params);
   metaheuristic->optimize();
 
-  delete strategy;
   delete metaheuristic;
   delete graph;
   return 0;
