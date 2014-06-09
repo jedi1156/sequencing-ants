@@ -21,6 +21,7 @@ public:
   Solution(unsigned no_nodes_in_graph, Node *node);
   Node* add_edge(Edge *edge);
   unsigned get_no_visits(Node *node) { return no_visits[node]; }
+  unsigned get_no_nodes_in_graph() const { return no_nodes_in_graph; }
   unsigned get_cummulated_length(Edge *edge) const;
   double get_quality() const;
 
@@ -29,6 +30,7 @@ public:
   vector<Edge*> &get_edges() { return edges; }
   vector<Node*> get_nodes() const { return nodes; }
 
+  string print_header() const;
   friend ostream& operator<<(ostream& os, const Solution& solution);
 };
 

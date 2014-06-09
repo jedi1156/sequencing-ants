@@ -35,11 +35,26 @@ double Solution::get_quality() const {
   return (double)no_unique_nodes / no_nodes_in_graph;
 }
 
+string Solution::print_header() const {
+  string str("");
+  str += "(";
+  str += to_string(nodes.size());
+  str += "/";
+  str += to_string(get_no_nodes_in_graph());
+  str += " = ";
+  str += to_string(get_quality());
+  str += "), length: ";
+  str += to_string(get_length());
+
+  return str;
+}
+
 ostream& operator<<(ostream& os, const Solution& solution) {
   vector<Node *> nodes = solution.get_nodes();
-  os << "Solution(" << nodes.size() << ", " << solution.get_quality() << "), length: " << solution.get_length() << endl;
+  os << "Solution" << solution.print_header() << endl;
   for (unsigned i = 0, len = nodes.size(); i < len; ++i) {
-    os << nodes[i]->get_index() << endl;
+    os << nodes[i]->get_index() << " ";
   }
+  os << endl;
   return os;
 }
