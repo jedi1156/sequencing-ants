@@ -130,7 +130,7 @@ private:
 
 ///
 template<class T, class U, class V>
-   INI<T, U, V>::INI(std::string filename, bool parseFile): filename(filename), current(NULL)
+   INI<T, U, V>::INI(std::string filename, bool parseFile): current(NULL), filename(filename)
 {
    if (parseFile)
       parse();
