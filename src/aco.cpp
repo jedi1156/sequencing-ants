@@ -1,5 +1,7 @@
 #include "aco.hpp"
 
+extern int debug;
+
 ACO::ACO(Graph *graph, ACOStrategy *strategy, ACOParameters *params)
 : Metaheuristic()
 , graph(graph)
@@ -22,7 +24,7 @@ ACO::~ACO() {
 void ACO::optimize() {
   strategy->before_optimization();
   while (is_working()) {
-    if (D) {
+    if (debug) {
       cout << "Iteration #" << strategy->get_no_iteration() << ":\tquality:\t";
       Solution *solution = get_best_solution();
       cout << (solution ? solution->get_quality() : 0.0) << endl;

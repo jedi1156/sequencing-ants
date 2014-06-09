@@ -1,5 +1,7 @@
 #include "aco_parallel_strategy.hpp"
 
+extern int debug;
+
 ACOParallelStrategy::ACOParallelStrategy(ACOParameters *params)
 : ACOStrategy(params)
 , working(true)
@@ -18,30 +20,30 @@ void ACOParallelStrategy::setup_optimization() {
 }
 
 void ACOParallelStrategy::finish_optimization() {
-  if (D >= 3) { cout << "Parallel finishing optimization" << endl; }
+  if (debug >= 3) { cout << "Parallel finishing optimization" << endl; }
   working = false;
   wake_up_threads();
 
   wait_for_all();
   for (unsigned i = 0, len = threads.size(); i < len; ++i) {
     threads[i]->join();
-    if (D >= 5) { cout << "Parallel joined #" << i << endl; }
+    if (debug >= 5) { cout << "Parallel joined #" << i << endl; }
   }
-  if (D >= 5) { cout << "Parallel joined all" << endl; }
+  if (debug >= 5) { cout << "Parallel joined all" << endl; }
 }
 
 void ACOParallelStrategy::iteration() {
-  if (D >= 5) { cout << "Parallel iteration> before waking up" << endl; }
+  if (debug >= 5) { cout << "Parallel iteration> before waking up" << endl; }
   wake_up_threads();
 
-  if (D >= 5) { cout << "Parallel iteration> before locking" << endl; }
+  if (debug >= 5) { cout << "Parallel iteration> before locking" << endl; }
   wait_for_all();
 }
 
 void ACOParallelStrategy::wait_for_all() {
   unique_lock<mutex> lck(ready_mutex);
   for (unsigned i = 0, len = threads.size(); i < len; ++i) {
-    if (D >= 5) { cout << "Parallel iteration> checking ready #" << i << endl; }
+    if (debug >= 5) { cout << "Parallel iteration> checking ready #" << i << endl; }
     while (!threads[i]->is_ready()) { ready_condition.wait(lck); }
   }
 }
@@ -59,8 +61,8 @@ void ACOParallelStrategy::wake_up_threads() {
 }
 
 void ACOParallelStrategy::wait_until_start(Worker *worker) {
-  if (D >= 5) { cout << "Parallel wait_until_start> before" << endl; }
+  if (debug >= 5) { cout << "Parallel wait_until_start> before" << endl; }
   unique_lock<mutex> lck(ready_mutex);
   while (worker->is_ready()) { start_condition.wait(lck); }
-  if (D >= 5) { cout << "Parallel wait_until_start> woken up" << endl; }
+  if (debug >= 5) { cout << "Parallel wait_until_start> woken up" << endl; }
 }

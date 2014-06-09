@@ -1,5 +1,7 @@
 #include "graph.hpp"
 
+extern int debug;
+
 Graph::Graph(string filename) {
 	// open file
   ifstream file;
@@ -8,7 +10,7 @@ Graph::Graph(string filename) {
   // load nodes
   string s;
   for(unsigned index = 0; file >> s; index++) {
-    if(D >= 4) cout << "adding " << s << endl;
+    if(debug >= 4) cout << "adding " << s << endl;
     nodes.push_back(new Node(s, index));
   }
 

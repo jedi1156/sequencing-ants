@@ -1,5 +1,7 @@
 #include "ant.hpp"
 
+extern int debug;
+
 Ant::Ant(Graph *graph, double alpha, double beta, double gamma, unsigned max_solution_length)
 : graph(graph)
 , alpha(alpha)
@@ -17,7 +19,7 @@ void Ant::traverse_graph() {
 
   while(term_condition) {
     term_condition = term_condition && move();
-    if (D >= 5) { cout << *solution << endl; }
+    if (debug >= 5) { cout << *solution << endl; }
   }
 }
 
@@ -90,6 +92,17 @@ Edge* Ant::choose_edge() {
   distribution.reserve(size);
   for (unsigned i = 0; i < size; ++i) {
     distribution.push_back(probability_of_choice(potential_choices[i]));
+  }
+
+  if (debug >= 5) {
+    cout << "distribution:\t";
+    for (unsigned i = 0, len = potential_choices.size(); i < len; ++i) {
+      Edge *choice = potential_choices[i];
+      cout << choice->get_n2()->get_index() << " => (" << distribution[i] << ", ";
+      cout << "ph: " << choice->get_pheromones() << ", ";
+      cout << "h: " << heuristic_attrictiveness(choice) << ")\t";
+    }
+    cout << endl;
   }
 
   for (unsigned i = 1; i < size; ++i) {

@@ -1,5 +1,6 @@
 #include "common.hpp"
 #include "graph.hpp"
+#include "aco_parameters.hpp"
 #include "aco_parallel_strategy.hpp"
 #include "aco_sequential_strategy.hpp"
 #include "metaheuristic.hpp"
@@ -7,6 +8,7 @@
 #include "INI.hpp"
 
 Metaheuristic *metaheuristic = NULL;
+int debug = 0;
 
 void terminte_work(int sig) {
   if (metaheuristic) { metaheuristic->terminate(); }

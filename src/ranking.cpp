@@ -1,5 +1,7 @@
 #include "ranking.hpp"
 
+extern int debug;
+
 Ranking::Ranking(ACOParameters *params, vector<Ant *> &ants)
 : params(params)
 , ants(ants)     // copy constructor
@@ -12,20 +14,20 @@ Ranking::Ranking(ACOParameters *params, vector<Ant *> &ants)
 void Ranking::update() {
   sort(ants.begin(), ants.end(), Ranking::ants_comparator);
 
-  if (D >= 5) { cout << "Ranking> Setting best" << endl; }
+  if (debug >= 5) { cout << "Ranking> Setting best" << endl; }
   if ((best_solution == NULL) || (solutions_comparator(best_solution, ants.front()->get_solution()))) {
     best_solution = new Solution(*ants.front()->get_solution());
   }
 }
 
 void Ranking::free_memory() {
-  if (D >= 5) { cout << "Ranking> freeing solutions" << endl; }
+  if (debug >= 5) { cout << "Ranking> freeing solutions" << endl; }
   for (unsigned i = 0; i < no_ranking_ants; ++i) {
-    if (D >= 6) { cout << "Ranking> freeing #" << i << endl; }
+    if (debug >= 6) { cout << "Ranking> freeing #" << i << endl; }
     ants[i]->free_solution();
-    if (D >= 6) { cout << "Ranking> freed #" << i << endl; }
+    if (debug >= 6) { cout << "Ranking> freed #" << i << endl; }
   }
-  if (D >= 5) { cout << "Ranking> freed" << endl; }
+  if (debug >= 5) { cout << "Ranking> freed" << endl; }
 }
 
 void Ranking::prepare_pheromones() {
@@ -41,6 +43,7 @@ double Ranking::calculate_additional_pheromones(Solution *solution, unsigned ran
 void Ranking::prepare_pheromones_for_one_ant(Ant *ant, unsigned ranking_position) {
   Solution *solution = ant->get_solution();
   double additional_pheromones = calculate_additional_pheromones(solution, ranking_position);
+  if (debug >= 4) { cout << "Ranking> additional pheromones for ant#" << ranking_position << ":\t" << additional_pheromones << endl; }
 
   vector<Edge*> edges = solution->get_edges();
   for (unsigned i = 0, len = edges.size(); i < len; ++i) {
