@@ -32,28 +32,54 @@ int main(int argc, char* argv[]) {
 
   instance_file = argv[1];
 
+  unsigned max_solution_length;
+  {
+    unsigned pos = instance_file.find(".");
+    if (pos == string::npos) {
+      cerr << "Bad filename format, use: *.<n>*" << endl;
+      return 1;
+    }
+    sscanf(instance_file.substr(pos + 1).c_str(), "%u", &max_solution_length);
+    if (max_solution_length == 0) {
+      cerr << "n == 0, bad filename format, use: *.<n>*" << endl;
+      return 1;
+    }
+  }
+
+  ini_t ini(config_file, true);
+
+  ini.select("global");
+  bool parallel = ini.get<bool>("parallel", 0);
+  debug = ini.get<int>("debug", 0);
+
+
   Graph *graph = new Graph(instance_file);
   if(graph->get_size() == 0) {
     cout << "Graph initialization failed\n";
     return 0;
   }
 
-  if(D) cout << *graph << endl;
+  max_solution_length += graph->get_node_size() - 1;
 
-  ini_t ini(config_file, true);
+  if (debug >= 2) { cout << "n = " << max_solution_length << endl; }
 
-  ini.select("global");
-  bool parallel = ini.get<bool>("parallel",0);
 
   ini.select("ACOParameters");
-  ACOParameters params( ini.get<int>("alpha",0),
-                        ini.get<int>("beta",0),
-                        ini.get<int>("gamma",0),
-                        ini.get<int>("number_of_ants",0),
-                        ini.get<int>("max_solution_length",0),
-                        ini.get<int>("q_param",0),
-                        ini.get<int>("r_param",0),
-                        ini.get<int>("ro",0));
+  ACOParameters params( ini.get<double>("alpha", ALPHA),
+                        ini.get<double>("beta", BETA),
+                        ini.get<double>("gamma", GAMMA),
+                        ini.get<unsigned>("number_of_ants", NUMBER_OF_ANTS),
+                        max_solution_length,
+                        ini.get<double>("q_param", Q_PARAM),
+                        ini.get<double>("r_param", R_PARAM),
+                        ini.get<double>("ro", RO),
+                        ini.get<double>("max_pheromones_multiplier", MAX_PHEROMONES_MULTIPLIER),
+                        ini.get<double>("amplify_best", AMPLIFY_BEST)
+                        );
+  if(debug) cout << params << endl;
+
+  if(debug >= 4) cout << *graph << endl;
+
 
   ACOStrategy *strategy;
   if (parallel) {
