@@ -59,8 +59,8 @@ void Ant::step(Edge *edge) {
 }
 
 double Ant::heuristic_attrictiveness(Edge *choice) {
-  unsigned no_visits = solution->get_no_visits(current_node);
-  return max(0.0, 1 + choice->get_weight() - gamma * no_visits);
+  unsigned no_visits = solution->get_no_visits(choice->get_n2());
+  return max(0.0, 1 + choice->get_normalized_weight() - gamma * no_visits);
 }
 
 double Ant::probability_of_choice(Edge *choice) {
