@@ -1,6 +1,6 @@
 [global]
 parallel=1
-debug=2
+debug=3
 
 [ACOParameters]
 alpha=1.6

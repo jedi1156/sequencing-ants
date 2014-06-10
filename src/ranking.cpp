@@ -18,6 +18,21 @@ void Ranking::update() {
   if ((best_solution == NULL) || (solutions_comparator(best_solution, ants.back()->get_solution()))) {
     best_solution = new Solution(*ants.back()->get_solution());
   }
+  if(debug) {
+    cout << "\t\t\t\t\t\t\t" << print(5) << endl;
+  }
+}
+
+string Ranking::print(unsigned n) {
+  string s("");
+  for (unsigned i = 0; i < n; i++ ) {
+    Ant *a = ants[ants.size() - 1 - i*(ants.size()/n)];
+    if(a->get_solution() != NULL) {
+      s += to_string(a->get_solution()->get_quality());
+      s += " ";
+    }
+  }
+  return s;
 }
 
 void Ranking::free_memory() {

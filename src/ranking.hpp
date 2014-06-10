@@ -7,8 +7,8 @@
 
 class Ranking {
 private:
-  ACOParameters *params;
-  vector<Ant *> ants;
+  ACOParameters *params
+;  vector<Ant *> ants;
   unsigned no_ranking_ants;
 
   Solution *best_solution;
@@ -22,10 +22,13 @@ public:
   void update();
 
   Solution *get_best_solution() { return best_solution; }
+  string print(unsigned n);
 
   static bool ants_comparator(Ant *a1, Ant *a2);
   static bool solutions_comparator(Solution *s1, Solution *s2);
+
   void free_memory();
+
 };
 
 #endif
