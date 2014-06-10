@@ -15,8 +15,8 @@ void Ranking::update() {
   sort(ants.begin(), ants.end(), Ranking::ants_comparator);
 
   if (debug >= 5) { cout << "Ranking> Setting best" << endl; }
-  if ((best_solution == NULL) || (solutions_comparator(best_solution, ants.front()->get_solution()))) {
-    best_solution = new Solution(*ants.front()->get_solution());
+  if ((best_solution == NULL) || (solutions_comparator(best_solution, ants.back()->get_solution()))) {
+    best_solution = new Solution(*ants.back()->get_solution());
   }
 }
 
